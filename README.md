@@ -15,8 +15,8 @@ This challenge focuses on using the `this` keyword as well as getting comfortabl
 
 **Follow these steps for completing your project.**
 
-* [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
-* [ ] Add your project manager as a reviewer on the pull-request
+* [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
+* [x] Add your project manager as a reviewer on the pull-request
 * [ ] Your project manager will count the project as complete by merging the branch back into master.
 
 ## Assignment Set Up
@@ -30,7 +30,7 @@ Having a solid understanding of how `this` works will give you a huge advantage 
 
 ## Prototype
 
-The prototype challenge will focus on building prototypes for a fantasy themed game that includes mages, swordsmen, and archers.  Follow the [prototypes.js](assignments/this.js) instructions closely to create the beginnings of what could be an awesome JavaScript game.
+The prototype challenge will focus on building prototypes for a fantasy themed game that includes mages, swordsmen, and archers.  Follow the [prototypes.js](assignments/prototype.js) instructions closely to create the beginnings of what could be an awesome JavaScript game.
 
 * Read the instructions found within the file carefully to finish the challenges. 
 * Remember to un-comment the objects and console logs to test your work at the bottom of the page.
