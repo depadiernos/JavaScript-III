@@ -44,17 +44,21 @@ function GameObject(attributes) {
   this.createdAt = attributes.createdAt
   this.name = attributes.name
   this.dimensions = attributes.dimensions
-  this.destroy = function() {
-    return `${this.name} was removed from the game.`
-  }
+}
+
+GameObject.prototype.destroy = function() {
+  return `${this.name} was removed from the game.`
 }
 
 function CharacterStats(attributes) {
   GameObject.call(this, attributes)
   this.healthPoints = attributes.healthPoints
-  this.takeDamage = function() {
-    return `${this.name} took damage.`
-  }
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype)
+
+CharacterStats.prototype.takeDamage = function() {
+  return `${this.name} took damage.`
 }
 
 function Humanoid(attributes) {
@@ -62,18 +66,28 @@ function Humanoid(attributes) {
   this.team = attributes.team
   this.weapons = attributes.weapons
   this.language = attributes.language
-  this.greet = function() {
-    return `${this.name} offers a greeting in ${this.language}.`
-  }
+}
+
+Humanoid.prototype = Object.create(CharacterStats.prototype)
+
+Humanoid.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}.`
 }
 
 function Hero(attributes){
   Humanoid.call(this, attributes)
-
+  this.team = "Hero"
+  this.attackVillian = function(){
+    return `${this.name} attacked the villian.`
+  }
 }
 
 function Villian(attributes){
   Humanoid.call(this, attributes)
+  this.team = "Villian"
+  this.attackHero = function(){
+    return `${this.name} attacked the hero.`
+  }
 }
 
 const mage = new Humanoid({
@@ -118,6 +132,32 @@ const archer = new Humanoid({
   language: "Elvish"
 })
 
+const paladin = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 4
+  },
+  healthPoints: 10,
+  name: "Arthur",
+  weapons: ["Sword", "Shield"],
+  language: "English"
+})
+
+const witch = new Villian({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 4
+  },
+  healthPoints: 10,
+  name: "Morgan",
+  weapons: ["Magic Wand", "Crystal Ball"],
+  language: "Druidish"
+})
+
 console.log(mage.createdAt) // Today's date
 console.log(archer.dimensions) // { length: 1, width: 2, height: 4 }
 console.log(swordsman.healthPoints) // 15
@@ -128,6 +168,8 @@ console.log(archer.language) // Elvish
 console.log(archer.greet()) // Lilith offers a greeting in Elvish.
 console.log(mage.takeDamage()) // Bruce took damage.
 console.log(swordsman.destroy()) // Sir Mustachio was removed from the game.
+console.log(paladin.attackVillian())
+console.log(witch.attackHero())
 
 // Stretch task:
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
